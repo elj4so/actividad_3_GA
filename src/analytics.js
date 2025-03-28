@@ -1,20 +1,26 @@
 import ReactGA from 'react-ga4';
 
-const initializeAnalytics = () => {
-  ReactGA.initialize('G-N9HVPV7JXV'); // Tu ID de GA4
-};
+// ID de medición de Google Analytics 4
+const MEASUREMENT_ID = 'G-N9HVPV7JXV';
 
-const trackPageView = (page) => {
+// Función para inicializar GA
+const initGA = () => {
+  ReactGA.initialize(MEASUREMENT_ID);
+}
+
+// Función para registrar una vista de página
+const pageView = (page) => {
   ReactGA.send({ hitType: "pageview", page });
-};
+}
 
-const trackEvent = (category, action, label, value) => {
+// Función para registrar un evento
+const event = (category, action, label, value) => {
   ReactGA.event({
     category,
     action,
     label,
     value
   });
-};
+}
 
-export { initializeAnalytics, trackPageView, trackEvent }
+export { initGA, pageView, event };
